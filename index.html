@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+<head>
+<title>Location API fetch</title>
+<meta charset="utf-8"/>
+<script>
+function getLocation() {
+
+res = fetch("https://api.zippopotam.us/us/33162")
+.then (res => res.text())
+.then (data => 
+   {
+   data = JSON.parse(data)
+   document.getElementById("data").innerHTML = "<ul>" + "<li>" + "Postal Code: " + data["post code"] + "</li>" + "<li>" + "Country: " + data.country + "</li>" + "<li>" + "Country Abbreviation: " + data["country abbreviation"]  + "</li>" //+ "Place: " + place["places.state"]; 
+   })
+.catch (error => console.log(error))
+}
+</script>
+</head>
+<body onload="getLocation()">
+	<h1>Location</h1>
+	<div id="data">Loading...</div>
+</body>
+</html>
